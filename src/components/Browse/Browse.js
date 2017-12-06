@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Nav from '../Nav/Nav.js';
 import { addAnimal } from '../../ducks/reducer';
+import Animals from './Animals/Animals.js'
 
 class Browse extends Component {
     constructor() {
@@ -11,54 +12,37 @@ class Browse extends Component {
         this.state = {
             currentAnimalList: []
         }
-        this.handleAnimalList = this.handleAnimalList.bind(this);
-        this.currentAnimal = this.currentAnimal.bind(this);
+        // this.handleAnimalList = this.handleAnimalList.bind(this);
     }
 
-    handleAnimalList() {
-        this.setState({
-            currentAnimalList: this.props.currentAnimalList
-        })
+
+
+    componentWillReceiveProps(nextProps) {
+        console.log("CWRP", nextProps)
     }
 
-    currentAnimal(e) {
-        this.props.currentAnimal(e)
-    }
+    // handleAnimalList() {
+    //     this.setState({
+    //         currentAnimalList: this.props.currentAnimalList
+    //     })
+    // }
 
-    animals() {
-        return this.state.currentAnimalList.map((e, i, arr) => {
-            return (
-                <div>
-                    <br />
-                    <br />
-                    <Link to={`/details/${e.name}`} onClick={() => { this.currentAnimal(e.name) }}>
-                        <p>{e.name}</p>
-                    </Link>
-                    <img src={e.image} alt='' />
-                    <p>Details: {e.details}</p>
-                    <p>Stock: {e.stock}</p>
-                    <br />
-                    <br />
-                    <br />
-                </div >
-            )
-        })
-    }
     render() {
         console.log("List: ", this.state.currentAnimalList)
         return (
             <main>
                 <Nav />
                 <br />
-                <br />
                 <div>Browse</div>
                 <br />
-                <button type="submit" onClick={() => {
+                <br />
+                {/* <button type="submit" onClick={() => {
                     this.handleAnimalList()
-                }}>Refresh Animal List</button>
+                }}>Refresh Animal List</button> */}
                 <br />
                 <br />
-                <section>{this.animals()}</section>
+                <Animals list={this.props.currentAnimalList} />
+                <Link to="/render"><button>Render Router</button></Link>
             </main>
 
         )

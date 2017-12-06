@@ -12,13 +12,37 @@ class Add extends Component {
             name: '',
             imageSource: '',
             details: '',
-            stock: ''
+            stock: '',
+            currentAnimalList: []
         }
         this.updateName = this.updateName.bind(this);
         this.updateImageSource = this.updateImageSource.bind(this);
         this.updateDetails = this.updateDetails.bind(this);
         this.updateStock = this.updateStock.bind(this);
+        this.addAnimal = this.addAnimal.bind(this);
+        this.handleAnimals = this.handleAnimals.bind(this);
     }
+
+    componentDidMount() {
+        this.setState({
+            currentAnimalList: this.props.currentAnimalList
+        })
+    }
+
+    componentWillReceiveProps(nextProps) {
+        console.log("Props", nextProps)
+        nextProps.addAnimal()
+        this.handleAnimals()
+    }
+
+    handleAnimals() {
+        return this.state.currentAnimalList.map((e, i, arr) => {
+            return (
+                <div>{e.name}</div>
+            )
+        })
+    }
+
     updateName(value) {
         this.setState({ name: value })
     }
@@ -34,6 +58,16 @@ class Add extends Component {
     updateStock(value) {
         this.setState({ stock: value })
     }
+
+    addAnimal(e) {
+        var tempList = this.state.currentAnimalList
+        tempList.push(e)
+        this.setState({
+            currentAnimalList: tempList
+        })
+        this.props.addAnimal(this.state.currentAnimalList)
+    }
+
     render() {
         return (
             <main>
@@ -48,8 +82,13 @@ class Add extends Component {
                 <input placeholder="stock" className="input" type="text" name="stock" onChange={(e) => this.updateStock(e.target.value)}
                 />
                 <button onClick={() => {
-                    this.props.addAnimal({ name: this.state.name, image: this.state.imageSource, details: this.state.details, stock: this.state.stock })
+                    this.addAnimal({ name: this.state.name, image: this.state.imageSource, details: this.state.details, stock: this.state.stock })
                 }}>Submit</button>
+
+                <br />
+                <br />
+                <br />
+                <section>{this.handleAnimals()}</section>
             </main >
 
         )
@@ -58,7 +97,7 @@ class Add extends Component {
 
 function mapStateToProps(state) {
     return {
-
+        currentAnimalList: state.currentAnimalList
     }
 }
 

@@ -1,4 +1,38 @@
 .input {
     border: 1px solid black;
-    margin: 2px
+    margin: 2px;
+    transition: background-color 2s
+}
+
+.main {
+    /* background-image: url(https://www.pixelstalk.net/wp-content/uploads/2016/03/Summer-Wallpaper-HD-Widescreen.jpg);
+    background: linear-gradient(red, black); */
+    animation: backgroundStuff 5s infinite
+}
+
+@keyframes movement {
+    from {top: 0px;
+        transform: rotate(0deg)
+    }
+    to {top: 600px;
+        transform: rotate(20deg)        
+    }
+}
+@keyframes backgroundStuff {
+    from {background-image: url(https://www.pixelstalk.net/wp-content/uploads/2016/03/Summer-Wallpaper-HD-Widescreen.jpg);
+}
+    to {background: linear-gradient(red, black);
+    }
+}
+.animals {
+    animation: movement 25s infinite;
+    background-color: pink;
+    height: 100px;
+    width: 100%;
+    position: relative;
+    text-shadow: 0 0 3px blue;
+}
+
+.input:hover {
+    background-color: gray
 }

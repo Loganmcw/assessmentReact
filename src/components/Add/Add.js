@@ -37,8 +37,11 @@ class Add extends Component {
 
     handleAnimals() {
         return this.state.currentAnimalList.map((e, i, arr) => {
+            let float = Math.random() * 10;
+            console.log("float", float)
+            var direction = (float > 5) ? "right" : "left"
             return (
-                <div>{e.name}</div>
+                <div style={{ float: direction, margin: "10px", border: "3px solid black", padding: "5px", boxShadow: "10px 2px 2px black" }}>{e.name}<br /></div>
             )
         })
     }
@@ -69,8 +72,9 @@ class Add extends Component {
     }
 
     render() {
+        console.log("Props: ", this.props)
         return (
-            <main>
+            <main className="main">
                 <Nav />
                 <div>Add Animal</div>
                 <input placeholder="name" className="input" type="text" name="Name" onChange={(e) => this.updateName(e.target.value)}
@@ -88,7 +92,7 @@ class Add extends Component {
                 <br />
                 <br />
                 <br />
-                <section>{this.handleAnimals()}</section>
+                <section className="animals">{this.handleAnimals()}</section>
             </main >
 
         )
@@ -100,5 +104,11 @@ function mapStateToProps(state) {
         currentAnimalList: state.currentAnimalList
     }
 }
+
+// function mapDispatchToProps(dispatch) {
+//     return {
+//         addAnimal: (value) => { dispatch(addAnimal(value)) }
+//     }
+// }
 
 export default connect(mapStateToProps, { addAnimal })(Add);

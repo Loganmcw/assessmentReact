@@ -1,0 +1,35 @@
+.boxSize {
+    border: 10px solid black;
+    width: 100%;
+    animation: boxSizing 5s infinite;
+}
+
+@keyframes boxSizing {
+    from {box-sizing: content-box
+    }
+    to {
+        box-sizing: border-box       
+    }
+}
+
+.testBox {
+    position: relative;
+    width: 100px;
+    height: 20px;
+}
+
+@media screen and (max-width: 700px) {
+    body {
+        background-color: lightblue
+    }
+}
+@media print and (max-width: 480px) {
+    body {
+        background-color: yellow
+    }
+}
+@media screen and (max-width: 480px) {
+    body {
+        background-color: red
+    }
+}

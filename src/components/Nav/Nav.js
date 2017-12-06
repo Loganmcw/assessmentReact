@@ -14,8 +14,9 @@ class Nav extends Component {
         return (
             <main>
                 <ul>
-                    <li><Link to="/browse"><p>Browse Books</p></Link></li>
-                    <li><Link to="/details"><p>Book Details</p></Link></li>
+                    <li><Link to="/"><p>Browse Animals</p></Link></li>
+                    <li><Link to="/details"><p>Animal Details</p></Link></li>
+                    <li><Link to="/add"><p>Add Animals</p></Link></li>
                 </ul>
             </main>
 

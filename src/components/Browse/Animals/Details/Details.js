@@ -71,10 +71,12 @@ class Details extends Component {
     }
 
     render() {
+        console.log("Props: ", this.props)
         return (
             <main>
                 <Nav />
                 <div>Details and RESTful API requests</div>
+                <h1>This page belongs to the {this.props.match.params.id}</h1>
                 <section>
                     <div>{this.handleDetails()}</div>
                     {/* <p>{this.props.currentAnimal.name}</p>

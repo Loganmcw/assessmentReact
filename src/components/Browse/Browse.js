@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import Nav from '../Nav/Nav.js';
 import { addAnimal } from '../../ducks/reducer';
 import Animals from './Animals/Animals.js'
+import Add from '../Add/Add.js';
 
 class Browse extends Component {
     constructor() {
@@ -16,24 +17,26 @@ class Browse extends Component {
     }
 
 
-
     componentWillReceiveProps(nextProps) {
         console.log("CWRP", nextProps)
+        this.setState({
+            currentAnimalList: nextProps.currentAnimalList
+        })
     }
 
     // handleAnimalList() {
-    //     this.setState({
-    //         currentAnimalList: this.props.currentAnimalList
-    //     })
+
     // }
 
     render() {
-        console.log("List: ", this.state.currentAnimalList)
+        console.log("Props: ", this.props)
         return (
             <main>
                 <Nav />
                 <br />
-                <div>Browse</div>
+                <div className="testBox">
+                    <div className="boxSize">Browse</div>
+                </div>
                 <br />
                 <br />
                 {/* <button type="submit" onClick={() => {
@@ -54,5 +57,6 @@ function mapStateToProps(state) {
         currentAnimalList: state.currentAnimalList
     }
 }
+
 
 export default connect(mapStateToProps, { addAnimal })(Browse);

@@ -1,0 +1,5 @@
+function mapDispatchtoProps(dispatch) {
+    return ({
+
+    })
+}

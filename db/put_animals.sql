@@ -1,0 +1,1 @@
+update animals set name = $2 where name = $1

@@ -15,7 +15,6 @@ class Nav extends Component {
             <main>
                 <ul>
                     <li><Link to="/"><p>Browse Animals</p></Link></li>
-                    <li><Link to="/details"><p>Animal Details</p></Link></li>
                     <li><Link to="/add"><p>Add Animals</p></Link></li>
                 </ul>
             </main>
